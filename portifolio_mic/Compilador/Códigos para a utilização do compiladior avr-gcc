@@ -1,0 +1,16 @@
+# Etapa 1 compila o arquivo c e cria um .o
+avr-gcc -Os -DF_CPU=16000000UL -mmcu=atmega328p -c main.c -o main.o
+
+# Etapa 2 .o -> .elf
+avr-gcc -Os -mmcu=atmega328p main.o -o main.elf
+
+# Etapa 3 Cria o arquivo .hex
+avr-objcopy -O ihex -R .eeprom main.elf main.hex
+
+# 4. Após o arquivo .hex ser criado
+flash
+Ou se preferir:
+
+sudo avrdude -c arduino -p ATMEGA328P -P /dev/ttyACM0 -b 115200 -U flash:w:main.hex
+
+(Caso a sua placa use conversor USB-Serial tipo CH340/FTDI e não encontre a porta, substitua /dev/ttyACM0 por /dev/ttyUSB0).
