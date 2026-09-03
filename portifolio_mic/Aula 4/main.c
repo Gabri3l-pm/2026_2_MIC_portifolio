@@ -8,6 +8,15 @@
 #include <avr/io.h> 	//Mapeamento dos registradores || No microship studio #include <xc.h>
 #include "avr/interrupt.h"
 #include "util/delay.h"
+#include <stdint.h>
+
+#define KEY_RELEASED 0
+#define KEY_PRESSED 1
+
+uint8_t gKeyState_w = 0;
+uint8_t gKeyState_a = 0;
+uint8_t gKeyState_s = 0;
+uint8_t gKeyState_d = 0;
 
 void GPIO_config(){
   //Seleciona os bits e os inverte para nível lógico baixo (Boa prática de código), 0b1111 0000
@@ -30,10 +39,28 @@ void PCINT_config() {
 
 
 ISR(PCINT0_vect){
-  PORTC |= (1<<PORTC0); //seta pino PC0
-  _delay_ms(100);
-  PORTC &= ~(1<<PORTC0); //zera pino PC0
-  GPIO_incBar();
+  uint8_t tCurrentkeyState_w = 0;
+  if((PINB & (1<<PINB0)) != 0) {//Testa PB0
+    //PB0 = 1, tecla 'w' solta 
+    tCurrentkeyState_w = KEY_RELEASED;
+  }
+  else{
+    //PB0 = 0, tecla 'w' pressionada
+    tCurrentkeyState_w = KEY_PRESSED;
+  }
+  if(tCurrentkeyState_w == KEY_PRESSED && gKeyState_w == KEY_RELEASED){
+    //Tecla W, acabou de ser pressionada
+   // gKeyState_w = KEY_PRESSED;
+    GPIO_incBar();
+  }
+  /*else if(tCurrentkeyState_w  == KEY_RELEASED && gKeyState_w == KEY_PRESSED){
+    //Tecla W, acabou de ser solta
+    gKeyState_w = KEY_RELEASED;
+  }*/
+  
+  PORTC ^= (1<<PORTC0); //seta pino PC0
+  //_delay_ms(100);
+  //PORTC &= ~(1<<PORTC0); //zera pino PC0
 }
 
 int main(void)

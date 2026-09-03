@@ -22,7 +22,7 @@
 
 <item itemtype="Ground" CircId="Ground-38" mainComp="false" Show_id="false" Show_Val="false" Pos="112,4" rotation="-90" hflip="1" vflip="1" label="Ground-38" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
 
-<item itemtype="ResistorDip" CircId="ResistorDip-41" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-196,-20" rotation="0" hflip="1" vflip="1" label="ResistorDip-41" idLabPos="-24,-40" labelrot="0" valLabPos="4,-26" valLabRot="90" Resistance="50 Ω" Size="8" PullUp="false" PuVolt="5 V" />
+<item itemtype="ResistorDip" CircId="ResistorDip-41" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-196,-20" rotation="0" hflip="1" vflip="1" label="ResistorDip-41" idLabPos="-24,-40" labelrot="0" valLabPos="4,-26" valLabRot="90" Resistance="100 Ω" Size="8" PullUp="false" PuVolt="5 V" />
 
 <item itemtype="Node" CircId="Node-11" mainComp="false" Pos="-16,180" />
 
