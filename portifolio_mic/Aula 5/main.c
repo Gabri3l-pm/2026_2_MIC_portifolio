@@ -8,15 +8,32 @@
 #include <avr/io.h> //Mapeamento dos registradores || No microship studio #include <xc.h>
 #include "util/delay.h"
 
+void GPIO_incBar(){
+  PORTD = PORTD >> 1;
+  PORTD |= 0b10000000;
+}
+
+void GPIO_decBar(){
+  PORTD = PORTD << 1;
+}
+
 void GPIO_config () {
-  DDRB |= (1<<DDB5) ; // Pino PB5 (13) como saida
+  DDRD = 0xFF; //Pinos de saída para os LEDs
+  PORTD = 0x00; // Barra apaga
 }
 int main(void)
 {
   GPIO_config();
   while(1)//Nunca retira esse while, pois o programa depende dele para funcionar
   {
-    PORTB ^= (1<<PORTB5); //Alterna o LED
-    _delay_ms(500);
+    for ( uint8_t i = 0; i < 8; i ++){
+      GPIO_incBar();
+      _delay_ms (200);
+    }
+    for ( uint8_t i = 0; i < 8; i ++){
+      GPIO_decBar();
+      _delay_ms (200);
+    }
+    
   }
 }
