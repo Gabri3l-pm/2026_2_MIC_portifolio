@@ -10,13 +10,11 @@
 #include "spi.h"
 #include "sm28vlt32.h"
 
-
-int main(void){
+int main(void) {
 	SPI_master_config();
-	uint8_t dado;
-	dado = 0x45;
-    while(1){
-        SPI_transceive(dado);
+	SM28VLT32_config();
+    while(1) {
+        uint16_t tMemoryData = SM28VLT32_readWord(1000);
 		_delay_ms(1);
     }
 }
