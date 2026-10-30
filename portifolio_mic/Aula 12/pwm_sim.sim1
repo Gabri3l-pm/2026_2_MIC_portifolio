@@ -1,0 +1,33 @@
+<circuit version="1.0.0-RC3" rev="1148" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="MCU" CircId="m328 TQFP-2" mainComp="false" Show_id="true" Show_Val="false" Pos="820,516" rotation="0" hflip="1" vflip="1" label="m328 TQFP-2" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="Debug/aula12_pwm.hex" Auto_Load="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" />
+
+<item itemtype="Oscope" CircId="Oscope-3" mainComp="false" Show_id="false" Show_Val="false" Pos="1084,716" rotation="0" hflip="1" vflip="1" label="Oscope-3" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _Pixels" Basic_Y="135 _Pixels" TimDiv="1000000000" TimPos="0,0,-1000000,0," VolDiv="1,1,1,1," Tunnels=",,,," Trigger="4" Filter="0.1 V" Trigger="4" AutoSC="4" Tracks="1" HideCh="false,true,false,false," VolPos="0,0,-5,0," />
+
+<item itemtype="Resistor" CircId="Resistor-6" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="764,668" rotation="0" hflip="1" vflip="1" label="Resistor-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="1 kΩ" />
+
+<item itemtype="Capacitor" CircId="Capacitor-10" mainComp="false" ShowProp="Capacitance" Show_id="false" Show_Val="true" Pos="720,712" rotation="90" hflip="1" vflip="1" label="Capacitor-10" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Capacitance="160 nF" Resistance="10 Ω" InitVolt="1 V" AutoStep="10 Steps" />
+
+<item itemtype="Ground" CircId="Ground-12" mainComp="false" Show_id="false" Show_Val="false" Pos="720,768" rotation="0" hflip="1" vflip="1" label="Ground-12" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Node" CircId="Node-8" mainComp="false" Pos="840,668" />
+
+<item itemtype="Node" CircId="Node-15" mainComp="false" Pos="736,668" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="m328 TQFP-2-PORTD6" endpinid="Node-8-0" pointList="844,612,844,668,840,668" />
+
+<item itemtype="Connector" uid="Connector-5" startpinid="m328 TQFP-2-PORTD5" endpinid="Oscope-3-Pin1" pointList="836,612,836,700,996,700" />
+
+<item itemtype="Connector" uid="Connector-7" startpinid="Resistor-6-rPin" endpinid="Node-8-1" pointList="780,668,840,668" />
+
+<item itemtype="Connector" uid="Connector-9" startpinid="Node-8-2" endpinid="Oscope-3-Pin0" pointList="840,668,996,668" />
+
+<item itemtype="Connector" uid="Connector-11" startpinid="Capacitor-10-lPin" endpinid="Node-15-0" pointList="720,696,720,668,736,668" />
+
+<item itemtype="Connector" uid="Connector-13" startpinid="Capacitor-10-rPin" endpinid="Ground-12-Gnd" pointList="720,728,720,752" />
+
+<item itemtype="Connector" uid="Connector-14" startpinid="Oscope-3-Pin2" endpinid="Node-15-1" pointList="996,732,736,732,736,668" />
+
+<item itemtype="Connector" uid="Connector-16" startpinid="Node-15-2" endpinid="Resistor-6-lPin" pointList="736,668,748,668" />
+
+</circuit>
