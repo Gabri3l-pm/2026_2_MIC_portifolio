@@ -10,20 +10,27 @@
 #include <avr/interrupt.h>          // necessário para ISR() e sei()
 
 volatile uint16_t tADCData;         // precisa ser global e volatile (usada na ISR)
+volatile uint16_t x[4] = {0, 0, 0, 0};   // declarado e inicializado
 
 ISR(TIMER1_COMPB_vect){
     PORTB ^= (1<<PORTB1);           // Debug: visualizar o tempo do TMR1
 }
 
-ISR(ADC_vect){
+ISR(ADC_vect){ // Interrupção para  visualizar o tempo TIME1
+    PORTB |= (1<<PORTB1);
     tADCData = ADC;
     // Acende o LED: 728 mV -> 728/1100 = 66,2% * 1024 ≈ 678
-    if(tADCData < 678){
+    x[3] = x[2]; //Linha de atraso do sinal X (fila FIFO)
+    x[2] = x[1];
+    x[1] = x[0];
+    uint16_t y = (x[0] + x[1] + x[2] + x[3]) / 4; //Filtro média movel de ordem 4
+    if(y < 678){
         PORTB |= (1<<PORTB0);
     }
     else{
         PORTB &= ~(1<<PORTB0);
     }
+    PORTB ^= ~(1<<PORTB1);
 }
 
 void ADC_config(){
